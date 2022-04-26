@@ -56,87 +56,16 @@
                   </div> -->
             </div>
             <div class="contacts clearfix_rule">
-                <div class="contact position-relative d-flex align-items-center px-2">
+                <div v-for="(item, index) in contacts" class="contact position-relative d-flex align-items-center px-2">
                     <div class="d-flex align-items-center">
-                        <img src="./assets/img/avatar_1.jpg" alt="" class="rounded-pill d-block" height="40px">
+                        <img :src="'./assets/img/avatar' + item.avatar + '.jpg'" alt="" class="rounded-pill d-block" height="40px">
                         <div class="ms-3">
-                            <span >Gino Piccioli</span>
+                            <span >{{item.name}}</span>
                             <div class="fs_small text_custom_secondary">Ultimo messaggio inviato</div>
                         </div>
                     </div>
                     <span class="p-2 fs_smaller text_custom_secondary">12:00</span>
-                </div>
-                <div class="contact position-relative d-flex align-items-center px-2">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/img/avatar_1.jpg" alt="" class="rounded-pill d-block" height="40px">
-                        <div class="ms-3">
-                            <span >Gino Piccioli</span>
-                            <div class="fs_small text_custom_secondary">Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <span class="p-2 fs_smaller text_custom_secondary">12:00</span>
-                </div>
-                <div class="contact position-relative d-flex align-items-center px-2">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/img/avatar_1.jpg" alt="" class="rounded-pill d-block" height="40px">
-                        <div class="ms-3">
-                            <span >Gino Piccioli</span>
-                            <div class="fs_small text_custom_secondary">Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <span class="p-2 fs_smaller text_custom_secondary">12:00</span>
-                </div>
-                <div class="contact position-relative d-flex align-items-center px-2">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/img/avatar_1.jpg" alt="" class="rounded-pill d-block" height="40px">
-                        <div class="ms-3">
-                            <span >Gino Piccioli</span>
-                            <div class="fs_small text_custom_secondary">Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <span class="p-2 fs_smaller text_custom_secondary">12:00</span>
-                </div>
-                <div class="contact position-relative d-flex align-items-center px-2">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/img/avatar_1.jpg" alt="" class="rounded-pill d-block" height="40px">
-                        <div class="ms-3">
-                            <span >Gino Piccioli</span>
-                            <div class="fs_small text_custom_secondary">Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <span class="p-2 fs_smaller text_custom_secondary">12:00</span>
-                </div>
-                <div class="contact position-relative d-flex align-items-center px-2">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/img/avatar_1.jpg" alt="" class="rounded-pill d-block" height="40px">
-                        <div class="ms-3">
-                            <span >Gino Piccioli</span>
-                            <div class="fs_small text_custom_secondary">Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <span class="p-2 fs_smaller text_custom_secondary">12:00</span>
-                </div>
-                <div class="contact position-relative d-flex align-items-center px-2">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/img/avatar_1.jpg" alt="" class="rounded-pill d-block" height="40px">
-                        <div class="ms-3">
-                            <span >Gino Piccioli</span>
-                            <div class="fs_small text_custom_secondary">Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <span class="p-2 fs_smaller text_custom_secondary">12:00</span>
-                </div>
-                <div class="contact position-relative d-flex align-items-center px-2">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/img/avatar_1.jpg" alt="" class="rounded-pill d-block" height="40px">
-                        <div class="ms-3">
-                            <span >Gino Piccioli</span>
-                            <div class="fs_small text_custom_secondary">Ultimo messaggio inviato</div>
-                        </div>
-                    </div>
-                    <span class="p-2 fs_smaller text_custom_secondary">12:00</span>
-                </div>
-
+                </div>             
             </div>
         </div>
         
