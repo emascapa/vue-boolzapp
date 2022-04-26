@@ -1,0 +1,92 @@
+:root {
+    --upper-bg-color: #009688;
+    --lower-bg-color: #DBDBD3;
+    --primary-box-color: #EAEAEA;
+    --secondary-font-color: #B1B1B1;
+    --secondary-box-color: #8EDAFC;
+    --custom-bg-notification: #F2FBFF;
+    --bg-message-sent: #D5F9BA;
+    --selected-user-bg: #E9EBEB;
+}
+
+
+.upper_bg {
+    height: 100px;
+    width: 100%;
+    background-color: var(--upper-bg-color);
+}
+
+.lower_bg {
+    height: calc(100vh - 100px);
+    width: 100%;
+    background-color: var(--lower-bg-color);
+}
+
+#app {
+    width: 80%;
+    max-width: 1000px;
+    height: 95vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.clearfix_rule::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.left_container {
+    width: 35%;
+    height: 100%;
+    float: left;
+    background-color: red;
+}
+
+.right_container {
+    width: 65%;
+    height: 100%;
+    float: left;
+    background-color: blue;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* UTILITY */
+
+.primary_bg_box_color {
+    background-color: var(--primary-box-color);
+}
+
+.secondary_bg_box_color {
+    background-color: var(--secondary-box-color);
+}
+
+.text_custom_secondary {
+    color: var(--secondary-font-color);
+}
+
+
+/* LEFT CONTAINER */
+
+.left_container > * {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.left_container > .user_bar {
+    height: 50px;
+}
+.left_container > .notification_bar {
+    height: 60px;
+}
+.left_container > .search_bar {
+    height: 40px;
+}
+.left_container > .contacts {
+    height: calc(100% - 150px);
+}
