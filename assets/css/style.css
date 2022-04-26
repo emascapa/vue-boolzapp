@@ -42,7 +42,6 @@
     width: 35%;
     height: 100%;
     float: left;
-    background-color: red;
 }
 
 .right_container {
@@ -70,12 +69,29 @@ img {
     color: var(--secondary-font-color);
 }
 
+.fs_standard {
+    font-size: 1rem;
+}
+
+.fs_small {
+    font-size: 0.8rem;
+}
+
+.fs_smaller {
+    font-size: 0.6rem;
+}
+
+.flex_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* LEFT CONTAINER */
 
 .left_container > * {
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .left_container > .user_bar {
@@ -89,4 +105,49 @@ img {
 }
 .left_container > .contacts {
     height: calc(100% - 150px);
+    background-color: white;
+    overflow-y: scroll;
+}
+
+.notification_bar div:first-child {
+    height: 35px;
+    aspect-ratio: 1 / 1;
+    background-color: var(--custom-bg-notification);
+}
+.notification_bar div:first-child > i {
+   color: var(--secondary-box-color);
+}
+
+.search_bar > * {
+    height: 95%;
+}
+
+.search_bar div:first-child {
+    width: 35px;
+    border-radius: 5px 0 0 5px;
+}
+
+.search_bar input {
+    width: calc(95% - 35px);
+    border: none;
+    border-radius: 0 5px 5px 0;
+}
+.search_bar input::placeholder {
+    /* color: blue; */
+    font-size: 0.8em;
+    /* text-align: center;
+    vertical-align: middle; */
+    padding-left: 0.5rem;
+} 
+
+.contacts .contact {
+    height: 60px;
+    border-bottom: 1px solid var(--secondary-font-color);
+
+}
+
+.contact span:last-child {
+   position: absolute;
+   top: 0;
+   right: 0;
 }
