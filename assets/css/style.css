@@ -211,7 +211,7 @@ img {
 .message.received > span {
     border-radius: 5px;
     max-width: 85%;
-    padding: 0.5rem 0.7rem;
+    padding: 0.5rem 2.5rem 0.5rem 0.7rem;
     min-width: 200px;
 }
 
@@ -225,7 +225,7 @@ img {
 .message .message_info {
     bottom: 0;
     right: 0;
-    padding: 0.3rem;
+    padding: 0.2rem;
 }
 
 

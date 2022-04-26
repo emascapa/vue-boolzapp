@@ -2,6 +2,7 @@ const app = new Vue(
     {
         el: '#app',
         data: {
+            contacts_counter: 0,
             contacts: [
                 {
                     name: 'Michele',
@@ -168,6 +169,16 @@ const app = new Vue(
 
             //here
         },
-        methods: {},
+        methods: {
+            clickContact(index) {
+
+          
+
+                this.contacts_counter = index;
+
+                console.log(this.contacts);
+                console.log(this.contacts_counter);
+            }
+        },
     }
 )
