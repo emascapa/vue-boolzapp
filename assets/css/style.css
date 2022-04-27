@@ -61,6 +61,8 @@ body {
     width: 35%;
     height: 100%;
     min-width: 300px;
+
+    user-select: none;
 }
 
 .right_container {
@@ -107,15 +109,14 @@ img {
 
 /* LEFT CONTAINER */
 
-.left_container > *, 
-.right_container > * {
+.left_container > * {
     width: 100%;
 }
 
-.left_container > .user_bar,
-.right_container > .chat_info_bar {
+.left_container > .user_bar {
     height: 50px;
 }
+
 .left_container > .notification_bar {
     height: 60px;
 }
@@ -163,6 +164,8 @@ img {
     height: 60px;
     border-bottom: 1px solid var(--secondary-font-color);
 
+    cursor: pointer;
+
 }
 
 .contact span:last-child {
@@ -173,6 +176,15 @@ img {
 
 
 /* RIGHT CONTAINER */
+.right_container > * {
+    width: 100%;
+}
+
+.right_container > .chat_info_bar {
+    height: 50px;
+
+    user-select: none;
+}
 
 .right_container > .chat_div {
     height: calc(100% - 100px);
@@ -246,6 +258,14 @@ img {
     padding: 0.2rem;
 }
 
+
+/* cursor pointer on icons */
+
+.user_bar i,
+.chat_info_bar i,
+.chat_actions i {
+    cursor: pointer;
+}
 
 
 

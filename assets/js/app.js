@@ -174,6 +174,8 @@ const app = new Vue(
 
             //dynamic input search user string
             searchUser: '',
+
+            responseCounter: 0,
         },
 
         methods: {
@@ -222,10 +224,26 @@ const app = new Vue(
 
                 const formattedHour = this.getHourFromDate(dateMessage);
 
+                let responseMessage;
+
+                if (this.responseCounter === 0) {
+                    responseMessage = 'ok';
+                    this.responseCounter++
+                } else if (this.responseCounter === 1) {
+                    responseMessage = 'va beneeeee';
+                    this.responseCounter++
+                } else if (this.responseCounter === 2) {
+                    responseMessage = 'HO CAPITO';
+                    this.responseCounter++
+                } else {
+                    responseMessage = 'LA VUOI FINIRE?????';
+                    this.responseCounter = 0;
+                }
+
                 const newMessageReceived = {
                     hour: formattedHour,
                     date: dateMessage,
-                    message: 'ok',
+                    message: responseMessage,
                     status: 'received'
                 }
 
