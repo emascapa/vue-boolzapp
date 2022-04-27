@@ -70,10 +70,10 @@
                             height="40px">
                         <div class="ms-3">
                             <span>{{item.name}}</span>
-                            <div class="fs_small text_custom_secondary">Ultimo messaggio inviato</div>
+                            <div class="last_message fs_small text_custom_secondary">{{item.messages[item.messages.length - 1].message}}</div>
                         </div>
                     </div>
-                    <span class="p-2 fs_smaller text_custom_secondary">12:00</span>
+                    <span class="p-2 fs_smaller text_custom_secondary">{{getHourFromDate(item.messages[item.messages.length - 1].date)}}</span>
                 </div>
             </div>
         </div>
