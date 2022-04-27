@@ -2,7 +2,7 @@ const app = new Vue(
     {
         el: '#app',
         data: {
-            contacts_counter: 0,
+            contacts_counter: null,
             contacts: [
                 {
                     name: 'Michele',
@@ -175,8 +175,14 @@ const app = new Vue(
             clickContact(index) {
                 this.contacts_counter = index;
 
-                console.log(this.contacts);
-                console.log(this.contacts_counter);
+                //console.log(this.contacts);
+                //console.log(this.contacts_counter);
+
+                this.contacts[this.contacts_counter].messages.forEach(element => {
+                    const formattedHour = element.date.slice(11, element.date.length - 3)
+                    //console.log(formattedHour);
+                    element.hour = formattedHour;
+                });
             },
 
             writeMessageAndResponse() {
