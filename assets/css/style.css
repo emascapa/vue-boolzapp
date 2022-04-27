@@ -9,6 +9,10 @@
     --selected-user-bg: #E9EBEB;
 }
 
+body {
+    min-width: 750px;
+    overflow-x: scroll;
+}
 
 .upper_bg {
     height: 100px;
@@ -22,7 +26,7 @@
     background-color: var(--lower-bg-color);
 }
 
-#app {
+/* #app {
     width: 80%;
     max-width: 1000px;
     height: 95vh;
@@ -30,6 +34,18 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow-x: scroll;
+} */
+
+#app {
+    width: 100%;
+    /* max-width: 1000px; */
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* transform: translate(-50%, -50%); */
+    overflow-x: scroll;
 }
 
 .clearfix_rule::after {
@@ -42,13 +58,15 @@
     width: 35%;
     height: 100%;
     float: left;
+    min-width: 300px;
 }
 
 .right_container {
     width: 65%;
     height: 100%;
     float: left;
-    background-color: blue;
+    min-width: 400px;
+    /* background-color: blue; */
 }
 
 img {
@@ -227,6 +245,53 @@ img {
     right: 0;
     padding: 0.2rem;
 }
+
+
+
+
+
+
+
+@media screen and (min-width: 1100px) {
+    #app {
+        width: 80%;
+        max-width: 1000px;
+        height: 95vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* overflow-x: scroll; */
+    }
+}
+
+/* 
+@media screen and (max-width: 1100px) {
+    #app {
+        width: 100%;
+        max-width: 1000px;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        overflow-x: scroll;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    #app {
+        width: 800px;
+        max-width: 1000px;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        overflow-x: scroll;
+    }
+} */
 
 
 

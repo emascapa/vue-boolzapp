@@ -121,7 +121,7 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
                     <div class="flex_center input_chat">
-                        <input type="text" class="w-100" placeholder="Scrivi un messaggio">
+                        <input type="text" class="w-100" placeholder="Scrivi un messaggio" v-model="userChat" v-on:keyup.enter="writeMessageAndResponse">
                     </div>
                     <div class="flex_center action">
                         <i class="fa-solid fa-microphone"></i>

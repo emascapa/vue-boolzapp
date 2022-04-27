@@ -167,17 +167,49 @@ const app = new Vue(
                 }
             ],
 
+            userChat: '',
+
             //here
         },
         methods: {
             clickContact(index) {
-
-          
-
                 this.contacts_counter = index;
 
                 console.log(this.contacts);
                 console.log(this.contacts_counter);
+            },
+
+            writeMessageAndResponse() {
+                const newMessageString = this.userChat;
+
+                const dateMessage = `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+
+                const newMessage = {
+                    date: dateMessage,
+                    //metti a posto la data
+                    message: newMessageString,
+                    status: 'sent'
+                }
+
+                this.contacts[this.contacts_counter].messages.push(newMessage);
+
+                this.userChat = '';
+
+                setTimeout(this.instantResponse, 1000)
+            },
+
+            instantResponse() {
+                const dateMessage = `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+
+
+                const newMessageReceived = {
+                    date: dateMessage,
+                    //metti a posto la data
+                    message: 'ok',
+                    status: 'received'
+                }
+
+                this.contacts[this.contacts_counter].messages.push(newMessageReceived);
             }
         },
     }
