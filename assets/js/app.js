@@ -2,7 +2,9 @@ const app = new Vue(
     {
         el: '#app',
         data: {
+            //counter element
             contacts_counter: null,
+            //contacts array
             contacts: [
                 {
                     name: 'Michele',
@@ -167,11 +169,14 @@ const app = new Vue(
                 }
             ],
 
+            //dynamic input chat string
             userChat: '',
 
-            //here
+            //dynamic input search user string
+            searchUser: '',
         },
         methods: {
+            //method to select a chat
             clickContact(index) {
                 this.contacts_counter = index;
 
@@ -185,14 +190,19 @@ const app = new Vue(
                 });
             },
 
+            //method for writing a message in chat
             writeMessageAndResponse() {
                 const newMessageString = this.userChat;
 
                 const dateMessage = `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+                //console.log(dateMessage);
+
+                const formattedHour = this.getHourFromDate(dateMessage);
+                //console.log(formattedHour);
 
                 const newMessage = {
+                    hour: formattedHour,
                     date: dateMessage,
-                    //metti a posto la data
                     message: newMessageString,
                     status: 'sent'
                 }
@@ -204,18 +214,37 @@ const app = new Vue(
                 setTimeout(this.instantResponse, 1000)
             },
 
+            //method for instant response after message
             instantResponse() {
+
                 const dateMessage = `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
 
+                const formattedHour = this.getHourFromDate(dateMessage);
 
                 const newMessageReceived = {
+                    hour: formattedHour,
                     date: dateMessage,
-                    //metti a posto la data
                     message: 'ok',
                     status: 'received'
                 }
 
                 this.contacts[this.contacts_counter].messages.push(newMessageReceived);
+            },
+
+            //method to extract the hour from the date string
+            getHourFromDate(dateString) {
+
+                let hourNow = dateString.split(' ')[1].split(':')[0];
+                let minutesNow = dateString.split(' ')[1].split(':')[1];
+
+                if (parseInt(hourNow) < 10) {
+                    hourNow = '0' + hourNow
+                }
+                if (parseInt(minutesNow) < 10) {
+                    minutesNow = '0' + minutesNow
+                }
+
+                return `${hourNow}:${minutesNow}`
             }
         },
     }

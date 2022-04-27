@@ -23,9 +23,12 @@
     <div class="upper_bg"></div>
     <div class="lower_bg"></div>
 
-    <div id="app" class="clearfix_rule">
+    <div id="app" class="d-flex">
+
         <!-- LEFT CONTAINER HERE -->
         <div class="left_container">
+
+            <!-- USER BAR HERE-->
             <div class="user_bar d-flex align-items-center px-3 primary_bg_box_color">
                 <div class="user_avatar d-flex align-items-center me-auto">
                     <img src="./assets/img/avatar_io.jpg" alt="" class="rounded-pill d-block" height="35px">
@@ -37,6 +40,8 @@
                     <i class="fa-solid fa-ellipsis-vertical ms-3"></i>
                 </div>
             </div>
+
+            <!-- NOTIFICATION BAR HERE -->
             <div class="notification_bar d-flex align-items-center px-3 secondary_bg_box_color">
                 <div class="flex_center rounded-pill">
                     <i class="fa-solid fa-bell-slash"></i>
@@ -46,20 +51,16 @@
                     <a href="#" class="fs_smaller text_custom_secondary">Attiva notifiche Desktop</a>
                 </div>
             </div>
+
+            <!-- SEARCH BAR HERE -->
             <div class="search_bar p-1 flex_center primary_bg_box_color">
                 <div class="px-2 bg-white flex_center">
                     <i class="fa-solid fa-magnifying-glass text_custom_secondary"></i>
                 </div>
                 <input class="border-none fs-smaller" type="text" placeholder="Cerca o inizia una nuova chat">
-
-
-                <!-- <div class="input-group input-group-sm mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                  </div> -->
             </div>
+
+            <!-- CONTACTS SECTION HERE -->
             <div class="contacts clearfix_rule">
                 <div v-for="(item, index) in contacts"
                     :class="(contacts_counter === index) ? 'contact position-relative d-flex align-items-center px-2 primary_bg_box_color' : 'contact position-relative d-flex align-items-center px-2'"
@@ -79,7 +80,8 @@
 
         <!-- RIGHT CONTAINER HERE -->
         <div v-if="contacts_counter !== null" class="right_container">
-            <!-- <div v-if="contacts_counter !== null"> -->
+
+            <!-- CHAT INFO BAR -->
             <div class="chat_info_bar d-flex align-items-center px-3 primary_bg_box_color">
                 <div class="user_avatar d-flex align-items-center me-auto">
                     <img :src="'./assets/img/avatar' + contacts[contacts_counter].avatar + '.jpg'" alt=""
@@ -95,6 +97,8 @@
                     <i class="fa-solid fa-ellipsis-vertical ms-3"></i>
                 </div>
             </div>
+
+            <!-- CHAT DIV HERE -->
             <div class="chat_div p-3">
                 <div v-for="(item, index) in contacts[contacts_counter].messages"
                     :class="(item.status === 'sent') ? 'message sent mb-2' : 'message received mb-2'">
@@ -126,6 +130,8 @@
 
 
             </div>
+
+            <!-- CHAT ACTIONS BAR HERE -->
             <div class="chat_actions d-flex align-items-center">
                 <div class="flex_center action">
                     <i class="fa-regular fa-face-smile"></i>
@@ -138,21 +144,17 @@
                     <i class="fa-solid fa-microphone"></i>
                 </div>
             </div>
-            <!-- </div> -->
-
         </div>
+
+        <!-- RIGHT CONTAINER BEFORE USER SELECT A CHAT -->
         <div v-else class="right_container">
             <div class="chat_info_bar px-3 primary_bg_box_color">
-
             </div>
-
             <div class="chat_div p-3 flex_center">
                 <span class="lead bg-light rounded-pill p-3">Boolzap Web <i class="fa-solid fa-otter"></i></span>
             </div>
-            <div class="chat_actions">
-                
+            <div class="chat_actions">   
             </div>
-
         </div>
     </div>
 

@@ -11,7 +11,7 @@
 
 body {
     min-width: 750px;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
 }
 
 .upper_bg {
@@ -26,17 +26,6 @@ body {
     background-color: var(--lower-bg-color);
 }
 
-/* #app {
-    width: 80%;
-    max-width: 1000px;
-    height: 95vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow-x: scroll;
-} */
-
 #app {
     width: 100%;
     /* max-width: 1000px; */
@@ -45,7 +34,7 @@ body {
     top: 0;
     left: 0;
     /* transform: translate(-50%, -50%); */
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
 }
 
 .clearfix_rule::after {
@@ -54,7 +43,7 @@ body {
     clear: both;
 }
 
-.left_container {
+/* .left_container {
     width: 35%;
     height: 100%;
     float: left;
@@ -66,7 +55,18 @@ body {
     height: 100%;
     float: left;
     min-width: 400px;
-    /* background-color: blue; */
+} */
+
+.left_container {
+    width: 35%;
+    height: 100%;
+    min-width: 300px;
+}
+
+.right_container {
+    width: 65%;
+    height: 100%;
+    min-width: 450px;
 }
 
 img {
@@ -108,10 +108,8 @@ img {
 /* LEFT CONTAINER */
 
 .left_container > *, 
-.right_container > * 
-{
+.right_container > * {
     width: 100%;
-    /* border: 1px solid black; */
 }
 
 .left_container > .user_bar,
@@ -265,33 +263,7 @@ img {
     }
 }
 
-/* 
-@media screen and (max-width: 1100px) {
-    #app {
-        width: 100%;
-        max-width: 1000px;
-        height: 100vh;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        overflow-x: scroll;
-    }
-}
 
-
-@media screen and (max-width: 800px) {
-    #app {
-        width: 800px;
-        max-width: 1000px;
-        height: 100vh;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        overflow-x: scroll;
-    }
-} */
 
 
 
