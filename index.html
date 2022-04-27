@@ -57,12 +57,12 @@
                 <div class="px-2 bg-white flex_center">
                     <i class="fa-solid fa-magnifying-glass text_custom_secondary"></i>
                 </div>
-                <input class="border-none fs-smaller" type="text" placeholder="Cerca o inizia una nuova chat">
+                <input class="border-none fs-smaller" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchUser"> <!-- v-on:keyup.enter="searchUserMethod" -->
             </div>
 
             <!-- CONTACTS SECTION HERE -->
             <div class="contacts clearfix_rule">
-                <div v-for="(item, index) in contacts"
+                <div v-for="(item, index) in contacts" v-if="item.visible === true"
                     :class="(contacts_counter === index) ? 'contact position-relative d-flex align-items-center px-2 primary_bg_box_color' : 'contact position-relative d-flex align-items-center px-2'"
                     @click="clickContact(index)">
                     <div class="d-flex align-items-center">

@@ -175,6 +175,7 @@ const app = new Vue(
             //dynamic input search user string
             searchUser: '',
         },
+
         methods: {
             //method to select a chat
             clickContact(index) {
@@ -245,7 +246,39 @@ const app = new Vue(
                 }
 
                 return `${hourNow}:${minutesNow}`
-            }
+            },
+
+            //method to search user
+          /*   searchUserMethod() {
+                //const searched = this.searchUser;
+
+                this.contacts.forEach(element => {
+                    if (element.name.toLowerCase().includes(this.searchUser.toLowerCase())) {
+                        element.visible = true;
+
+                        console.log('uno trovato');
+                    } else {
+                        element.visible = false; 
+                        console.log('no mi disp');
+                    }
+                })
+            } */
         },
+
+        computed: {
+            filterUsers() {
+
+                this.contacts.forEach(element => {
+                    if (element.name.toLowerCase().includes(this.searchUser.toLowerCase())) {
+                        element.visible = true;
+
+                        //console.log('uno trovato');
+                    } else {
+                        element.visible = false; 
+                        //console.log('no mi disp');
+                    }
+                })
+            }
+          }
     }
 )

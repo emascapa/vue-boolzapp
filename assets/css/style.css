@@ -229,6 +229,8 @@ img {
     max-width: 85%;
     padding: 0.5rem 2.5rem 0.5rem 0.7rem;
     min-width: 200px;
+    /* per far andare il testo a capo */
+    word-break: break-all;
 }
 
 .message.sent > span {
