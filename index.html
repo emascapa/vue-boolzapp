@@ -70,10 +70,15 @@
                             height="40px">
                         <div class="ms-3">
                             <span>{{item.name}}</span>
-                            <div class="last_message fs_small text_custom_secondary">{{item.messages[item.messages.length - 1].message}}</div>
+
+                            <div v-if="item.messages.length !== 0" class="last_message fs_small text_custom_secondary">{{item.messages[item.messages.length - 1].message}}</div>
+                            <div v-else class="last_message fs_small text_custom_secondary">No messages</div>
+
                         </div>
                     </div>
-                    <span class="p-2 fs_smaller text_custom_secondary">{{getHourFromDate(item.messages[item.messages.length - 1].date)}}</span>
+                    <span v-if="item.messages.length !== 0" class="p-2 fs_smaller text_custom_secondary">{{getHourFromDate(item.messages[item.messages.length - 1].date)}}</span>
+                    <!-- <span v-else class="p-2 fs_smaller text_custom_secondary">ciao</span> -->
+
                 </div>
             </div>
         </div>
@@ -100,7 +105,7 @@
 
             <!-- CHAT DIV HERE -->
             <div class="chat_div p-3">
-                <div v-if="contacts[contacts_counter].messages.length > 0">
+                <div v-if="contacts[contacts_counter].messages.length !== 0">
                     <div v-for="(item, index) in contacts[contacts_counter].messages"
                         :class="(item.status === 'sent') ? 'message sent mb-2' : 'message received mb-2'">
                         <span class="position-relative">
@@ -118,8 +123,9 @@
                         </span>
                     </div>
                 </div>
-                <div v-else class="flex_center h-100 w-100">
+                <div v-else class="d-flex flex-column justify-content-center align-items-center h-100 w-100">
                     <h2>No messages</h2>
+                    <span>Invia un messaggio per avviare la chat</span>
                 </div>
             </div>
 
