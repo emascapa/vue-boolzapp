@@ -252,10 +252,13 @@ img {
     word-break: break-all;
 }
 
-.message.sent > span {
+.message.sent > span,
+.message.sent .dropdown_btn {
     background-color: var(--bg-message-sent);
 }
-.message.received > span {
+
+.message.received > span,
+.message.received .dropdown_btn {
     background-color: white;
 }
 
@@ -263,8 +266,26 @@ img {
     bottom: 0;
     right: 0;
     padding: 0.2rem;
+    user-select: none;
 }
 
+.message .dropdown_btn {
+    top: 50%;
+    right: 3px;
+    transform: translate(0, -50%);
+    height: 100%;
+    padding: 0 0.4rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    display: none;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.message:hover .dropdown_btn {
+    display: flex;
+    align-items: center;
+}
 
 /* cursor pointer on icons */
 

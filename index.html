@@ -57,7 +57,7 @@
                 <div class="px-2 bg-white flex_center">
                     <i class="fa-solid fa-magnifying-glass text_custom_secondary"></i>
                 </div>
-                <input class="border-none fs-smaller" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchUser"> <!-- v-on:keyup.enter="searchUserMethod" -->
+                <input class="border-none fs-smaller" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchUser" @keyup="searchUserMethod"> <!-- v-on:keyup.enter="searchUserMethod" -->
             </div>
 
             <!-- CONTACTS SECTION HERE -->
@@ -100,35 +100,27 @@
 
             <!-- CHAT DIV HERE -->
             <div class="chat_div p-3">
-                <div v-for="(item, index) in contacts[contacts_counter].messages"
-                    :class="(item.status === 'sent') ? 'message sent mb-2' : 'message received mb-2'">
-                    <span class="position-relative">
-                        {{item.message}}
-                        <span
-                            class="position-absolute message_info fs_smaller text_custom_secondary">{{item.hour}}</span>
-                    </span>
+                <div v-if="contacts[contacts_counter].messages.length > 0">
+                    <div v-for="(item, index) in contacts[contacts_counter].messages"
+                        :class="(item.status === 'sent') ? 'message sent mb-2' : 'message received mb-2'">
+                        <span class="position-relative">
+                            {{item.message}}
+                            <div class="dropdown position-absolute dropdown_btn">
+                                <span type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" class=""><i
+                                        class="text_custom_secondary fa-solid fa-chevron-down"></i></span>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <span class="dropdown-item">Informazioni</span>
+                                    <span class="dropdown-item" @click="eraseMessage(index)">Elimina messaggio</span>
+                                </div>
+                            </div>
+                            <span class="position-absolute message_info fs_smaller text_custom_secondary">{{item.hour}}</span>
+                        </span>
+                    </div>
                 </div>
-                <!-- <div class="message sent mb-2">
-                        <span class="position-relative">
-                            ciao
-                            <span class="position-absolute message_info fs_smaller text_custom_secondary">12:00</span>
-                        </span>
-                    </div>
-                    <div class="message sent mb-2">
-                        <span class="position-relative">
-                            ciao
-                            <span class="position-absolute message_info fs_smaller text_custom_secondary">12:00</span>
-                        </span>
-                    </div>
-                    <div class="message received mb-2">
-                        <span class="position-relative">
-                            ciao
-                            <span class="position-absolute message_info fs_smaller text_custom_secondary">12:00</span>
-                        </span>
-                    </div> -->
-
-
-
+                <div v-else class="flex_center h-100 w-100">
+                    <h2>No messages</h2>
+                </div>
             </div>
 
             <!-- CHAT ACTIONS BAR HERE -->
@@ -158,7 +150,10 @@
         </div>
     </div>
 
-
+    <!-- scripts for bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- For prototyping or learning purposes -->
     <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>

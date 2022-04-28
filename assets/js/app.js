@@ -195,6 +195,8 @@ const app = new Vue(
 
             //method for writing a message in chat
             writeMessageAndResponse() {
+                if (this.userChat.replace(/\s+/g, '') !== '') {
+
                 const newMessageString = this.userChat;
 
                 const dateMessage = `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
@@ -215,6 +217,10 @@ const app = new Vue(
                 this.userChat = '';
 
                 setTimeout(this.instantResponse, 1000)
+
+                } else {
+                    this.userChat = '';
+                }
             },
 
             //method for instant response after message
@@ -267,24 +273,8 @@ const app = new Vue(
             },
 
             //method to search user
-          /*   searchUserMethod() {
+            searchUserMethod() {
                 //const searched = this.searchUser;
-
-                this.contacts.forEach(element => {
-                    if (element.name.toLowerCase().includes(this.searchUser.toLowerCase())) {
-                        element.visible = true;
-
-                        console.log('uno trovato');
-                    } else {
-                        element.visible = false; 
-                        console.log('no mi disp');
-                    }
-                })
-            } */
-        },
-
-        computed: {
-            filterUsers() {
 
                 this.contacts.forEach(element => {
                     if (element.name.toLowerCase().includes(this.searchUser.toLowerCase())) {
@@ -296,7 +286,30 @@ const app = new Vue(
                         //console.log('no mi disp');
                     }
                 })
+            },
+
+            //method for erasing messages 
+            eraseMessage(index) {
+                this.contacts[this.contacts_counter].messages.splice(index,1);
+
+                console.log(`Lunghezza array messaggi adesso: ${this.contacts[this.contacts_counter].messages.length}`);
             }
-          }
+        },
+
+        /* computed: {
+            filterUsers() {
+
+                this.contacts.forEach(element => {
+                    if (element.name.toLowerCase().includes(this.searchUser.toLowerCase())) {
+                        element.visible = true;
+
+                        console.log('uno trovato');
+                    } else {
+                        element.visible = false; 
+                        console.log('no mi disp');
+                    }
+                })
+            }
+        } */
     }
 )
