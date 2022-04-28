@@ -1,3 +1,6 @@
+//to import emoji
+Vue.use(EmojiPicker)
+
 const app = new Vue(
     {
         el: '#app',
@@ -164,97 +167,7 @@ const app = new Vue(
                             date: '10/01/2020 15:51:00',
                             message: 'OK!!',
                             status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'OK!!',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'OK!!',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'OK!!',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'OK!!',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'OK!!',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'OK!!',
-                            status: 'received'
-                        },
+                        }
                     ],
                 }
             ],
@@ -265,10 +178,13 @@ const app = new Vue(
             //dynamic input search user string
             searchUser: '',
 
+            //
             responseCounter: 0,
+
         },
 
         methods: {
+
             //method to select a chat
             clickContact(index) {
                 this.contacts_counter = index;
@@ -279,16 +195,13 @@ const app = new Vue(
 
                 //QUESTO L'HO LEVATO PK PER VISUALIZZARE L'ORA DEL MESSAGIO INVOCO LA FUNZIONE DIRETTAMENTE DALL'HTML {{}}
 
-              /*   this.contacts[this.contacts_counter].messages.forEach(element => {
+                /*   this.contacts[this.contacts_counter].messages.forEach(element => {
                     const formattedHour = this.getHourFromDate(element.date);
                     //console.log(formattedHour);
                     element.hour = formattedHour;
                 }); */
-
-                //setTimeout(() => {this.scrollChatDivToBottom()},2000)
                 
                 Vue.nextTick(() => {this.scrollChatDivToBottom()});
-                
             },
 
             //scroll chat to the bottom 
@@ -310,17 +223,12 @@ const app = new Vue(
 
                 const newMessageString = this.userChat;
 
-                //const dateMessage = `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
                 const dateMessage = this.getDateAsWeLike();
                 console.log(dateMessage);
 
-                //QUIIIIII
                 const formattedHour = this.getHourFromDate(dateMessage);
-                //console.log(formattedHour);
 
                 const newMessage = {
-                    //QUIIII
-                    //hour: formattedHour,
                     date: dateMessage,
                     message: newMessageString,
                     status: 'sent'
@@ -342,10 +250,7 @@ const app = new Vue(
             //method for instant response after message
             instantResponse() {
 
-                //const dateMessage = `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
                 const dateMessage = this.getDateAsWeLike();
-                //QUIIIIIII
-                //const formattedHour = this.getHourFromDate(dateMessage);
 
                 let responseMessage;
 
@@ -364,8 +269,6 @@ const app = new Vue(
                 }
 
                 const newMessageReceived = {
-                    //QUIIIII
-                    //hour: formattedHour,
                     date: dateMessage,
                     message: responseMessage,
                     status: 'received'
@@ -414,7 +317,12 @@ const app = new Vue(
                 this.contacts[this.contacts_counter].messages.splice(index,1);
 
                 console.log(`Lunghezza array messaggi adesso: ${this.contacts[this.contacts_counter].messages.length}`);
-            }
+            },
+
+            //method to insert emoji
+            insertEmoji(emoji) {
+                this.userChat += emoji
+            },
         },
 
     }

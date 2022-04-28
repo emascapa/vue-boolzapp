@@ -43,20 +43,6 @@ body {
     clear: both;
 }
 
-/* .left_container {
-    width: 35%;
-    height: 100%;
-    float: left;
-    min-width: 300px;
-}
-
-.right_container {
-    width: 65%;
-    height: 100%;
-    float: left;
-    min-width: 400px;
-} */
-
 .left_container {
     width: 35%;
     height: 100%;
@@ -153,11 +139,7 @@ img {
     border-radius: 0 5px 5px 0;
 }
 .search_bar input::placeholder {
-    /* color: blue; */
     font-size: 0.8em;
-    /* text-align: center;
-    vertical-align: middle; */
-    /* padding-left: 0.5rem; */
 } 
 
 .contacts .contact {
@@ -209,7 +191,7 @@ img {
     width: 80px;
 }
 .chat_actions .input_chat {
-    width: 100%;
+    width: calc(100% - 160px);
     height: 70%;
 }
 
@@ -220,14 +202,7 @@ img {
     border-radius: 5px;
 }
 .input_chat input::placeholder {
-    /* color: blue; */
     font-size: 0.8em;
-    /* text-align: center;
-    vertical-align: middle; */
-    /* padding-left: 0.5rem; */
-    /* position: absolute;
-    top: 50%;
-    transform: translate(0, -50%); */
 } 
 
 .message {
@@ -315,9 +290,62 @@ input::placeholder {
 } 
 
 
+/* Custom scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 20px;
+}
+    
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+    
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #999; 
+}
+    
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #888; 
+}
 
 
 
+/* BONUS EMOJI PICKER */
+
+#emoji_space {
+    position: relative;
+    
+    width: 80px;
+    height: 100%;
+    /* border: 2px solid red; */
+}
+
+.div_emojis {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    height: 200px;
+    width: 500px;
+    overflow-y: scroll;
+    
+    min-width: 300px;
+    max-width: calc(100vw / 3);
+    
+    max-height: calc(100vh / 4);
+    /* border-top: 1px solid var(--primary-box-color); */
+}
+
+.div_emojis .emoji_icon {
+    cursor: pointer;
+}
+
+
+/* MEDIA QUERY ALLARGAMENTO SCHERMO */
 @media screen and (min-width: 1100px) {
     #app {
         width: 80%;
@@ -330,17 +358,3 @@ input::placeholder {
         /* overflow-x: scroll; */
     }
 }
-
-
-
-
-/* input:focus { 
-    outline: none !important;
-    border-color: #719ECE;
-    box-shadow: 0 0 10px #719ECE;
-}
-textarea:focus { 
-    outline: none !important;
-    border-color: #719ECE;
-    box-shadow: 0 0 10px #719ECE;
-} */

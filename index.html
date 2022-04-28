@@ -57,7 +57,8 @@
                 <div class="px-2 bg-white flex_center">
                     <i class="fa-solid fa-magnifying-glass text_custom_secondary"></i>
                 </div>
-                <input class="border-none fs-smaller" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchUser" @keyup="searchUserMethod"> <!-- v-on:keyup.enter="searchUserMethod" -->
+                <input class="border-none fs-smaller" type="text" placeholder="Cerca o inizia una nuova chat"
+                    v-model="searchUser" @keyup="searchUserMethod"> <!-- v-on:keyup.enter="searchUserMethod" -->
             </div>
 
             <!-- CONTACTS SECTION HERE -->
@@ -71,12 +72,15 @@
                         <div class="ms-3">
                             <span>{{item.name}}</span>
 
-                            <div v-if="item.messages.length !== 0" class="last_message fs_small text_custom_secondary">{{item.messages[item.messages.length - 1].message}}</div>
+                            <div v-if="item.messages.length !== 0" class="last_message fs_small text_custom_secondary">
+                                {{item.messages[item.messages.length - 1].message}}</div>
                             <div v-else class="last_message fs_small text_custom_secondary">No messages</div>
 
                         </div>
                     </div>
-                    <span v-if="item.messages.length !== 0" class="p-2 fs_smaller text_custom_secondary">{{getHourFromDate(item.messages[item.messages.length - 1].date)}}</span>
+                    <span v-if="item.messages.length !== 0"
+                        class="p-2 fs_smaller text_custom_secondary">{{getHourFromDate(item.messages[item.messages.length
+                        - 1].date)}}</span>
                     <!-- <span v-else class="p-2 fs_smaller text_custom_secondary">ciao</span> -->
 
                 </div>
@@ -120,7 +124,8 @@
                                 </div>
                             </div>
                             <!-- <span class="position-absolute message_info fs_smaller text_custom_secondary">{{item.hour}}</span> -->
-                            <span class="position-absolute message_info fs_smaller text_custom_secondary">{{getHourFromDate(item.date)}}</span>
+                            <span
+                                class="position-absolute message_info fs_smaller text_custom_secondary">{{getHourFromDate(item.date)}}</span>
                         </span>
                     </div>
                 </div>
@@ -132,35 +137,72 @@
 
             <!-- CHAT ACTIONS BAR HERE -->
             <div class="chat_actions d-flex align-items-center">
-                <div class="flex_center action">
+
+                <!-- in caso faccio casino questo è la faccina vekkia -->
+                <!-- <div class="flex_center action">
                     <i class="fa-regular fa-face-smile"></i>
-                </div>
+                </div> -->
+
+
+                <!-- ESPERIMENTO EMOJI PICKER-->
+
+                <emoji-picker id="emoji_space" >
+                    <div class="h-100 flex_center action" type="button" slot="emoji-invoker" slot-scope="{ events: { click: clickEvent } }"
+                        @click.stop="clickEvent"><i class="fa-regular fa-face-smile"></i>
+                    </div>
+
+                    <div class="div_emojis primary_bg_box_color py-1" slot="emoji-picker" slot-scope="{ emojis, display }"> <!--  { emojis, insert, display }-->
+                        <div v-for="emojiGroup in emojis">
+                            <div>
+                                <span class="emoji_icon" v-for="(emoji, emojiName) in emojiGroup" @click="insertEmoji(emoji)" :title="emojiName">
+                                    {{ emoji }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </emoji-picker>
+                <!-- FINE ESPERIMENTO pare funzioni-->
+
+
                 <div class="flex_center input_chat">
                     <input type="text" class="w-100" placeholder="Scrivi un messaggio" v-model="userChat"
                         v-on:keyup.enter="writeMessageAndResponse">
                 </div>
-                <div class="flex_center action">
+                <div v-if="userChat == ''" class="flex_center action">
                     <i class="fa-solid fa-microphone"></i>
+                </div>
+                <div v-else class="flex_center action" @click="writeMessageAndResponse">
+                    <i class="fa-solid fa-paper-plane"></i>
                 </div>
             </div>
         </div>
 
         <!-- RIGHT CONTAINER BEFORE USER SELECT A CHAT -->
         <div v-else class="right_container">
-            <div class="chat_info_bar px-3 primary_bg_box_color">
+            <!-- <div class="chat_info_bar px-3 primary_bg_box_color">
+            </div> -->
+            <div class="bg-light p-3 flex_center w-100 h-100 overflow-hidden">
+                <span class="lead bg-light rounded-pill p-3 border border-3 border-dark user-select-none">Boolzap Web <i
+                        class="fa-solid fa-otter"></i></span>
             </div>
-            <div class="chat_div p-3 flex_center">
-                <span class="lead bg-light rounded-pill p-3">Boolzap Web <i class="fa-solid fa-otter"></i></span>
-            </div>
-            <div class="chat_actions">   
-            </div>
+            <!-- <div class="chat_actions">   
+            </div> -->
         </div>
     </div>
 
     <!-- scripts for bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- import emojis -->
+    <script src="https://unpkg.com/vue-emoji-picker/dist/vue-emoji-picker.js"></script>
 
     <!-- For prototyping or learning purposes -->
     <script src='https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'></script>
@@ -171,5 +213,3 @@
 </body>
 
 </html>
-
-
