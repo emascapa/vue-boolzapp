@@ -157,7 +157,7 @@ img {
     font-size: 0.8em;
     /* text-align: center;
     vertical-align: middle; */
-    padding-left: 0.5rem;
+    /* padding-left: 0.5rem; */
 } 
 
 .contacts .contact {
@@ -197,6 +197,7 @@ img {
     height: calc(100% - 100px);
     background-image: url(../img/mine.jpg);
     overflow-y: scroll;
+    
 }
 
 .right_container > .chat_actions {
@@ -223,7 +224,10 @@ img {
     font-size: 0.8em;
     /* text-align: center;
     vertical-align: middle; */
-    padding-left: 0.5rem;
+    /* padding-left: 0.5rem; */
+    /* position: absolute;
+    top: 50%;
+    transform: translate(0, -50%); */
 } 
 
 .message {
@@ -295,6 +299,20 @@ img {
     cursor: pointer;
 }
 
+/* Remove outline on input */
+input {
+    padding: 0 0.7rem;
+    outline: none !important;
+}
+
+/* center placeholder in input bar */
+input::placeholder {
+  
+    padding-left: 0.2rem;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+} 
 
 
 
@@ -316,4 +334,13 @@ img {
 
 
 
-
+/* input:focus { 
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+textarea:focus { 
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+} */

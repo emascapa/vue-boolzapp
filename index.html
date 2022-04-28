@@ -119,7 +119,8 @@
                                     <span class="dropdown-item" @click="eraseMessage(index)">Elimina messaggio</span>
                                 </div>
                             </div>
-                            <span class="position-absolute message_info fs_smaller text_custom_secondary">{{item.hour}}</span>
+                            <!-- <span class="position-absolute message_info fs_smaller text_custom_secondary">{{item.hour}}</span> -->
+                            <span class="position-absolute message_info fs_smaller text_custom_secondary">{{getHourFromDate(item.date)}}</span>
                         </span>
                     </div>
                 </div>
@@ -170,3 +171,5 @@
 </body>
 
 </html>
+
+

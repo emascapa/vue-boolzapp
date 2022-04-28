@@ -164,7 +164,97 @@ const app = new Vue(
                             date: '10/01/2020 15:51:00',
                             message: 'OK!!',
                             status: 'received'
-                        }
+                        },
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:51:00',
+                            message: 'OK!!',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:51:00',
+                            message: 'OK!!',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:51:00',
+                            message: 'OK!!',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:51:00',
+                            message: 'OK!!',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:51:00',
+                            message: 'OK!!',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:30:55',
+                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:51:00',
+                            message: 'OK!!',
+                            status: 'received'
+                        },
                     ],
                 }
             ],
@@ -186,11 +276,32 @@ const app = new Vue(
                 //console.log(this.contacts);
                 //console.log(this.contacts_counter);
 
-                this.contacts[this.contacts_counter].messages.forEach(element => {
-                    const formattedHour = element.date.slice(11, element.date.length - 3)
+
+                //QUESTO L'HO LEVATO PK PER VISUALIZZARE L'ORA DEL MESSAGIO INVOCO LA FUNZIONE DIRETTAMENTE DALL'HTML {{}}
+
+              /*   this.contacts[this.contacts_counter].messages.forEach(element => {
+                    const formattedHour = this.getHourFromDate(element.date);
                     //console.log(formattedHour);
                     element.hour = formattedHour;
-                });
+                }); */
+
+                //setTimeout(() => {this.scrollChatDivToBottom()},2000)
+                
+                Vue.nextTick(() => {this.scrollChatDivToBottom()});
+                
+            },
+
+            //scroll chat to the bottom 
+            scrollChatDivToBottom() {
+
+                const chatDiv = document.querySelector('.chat_div');
+                chatDiv.scrollTop = chatDiv.scrollHeight - chatDiv.clientHeight;
+                 
+            },
+
+            //method to get the date
+            getDateAsWeLike() {
+                return `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
             },
 
             //method for writing a message in chat
@@ -199,14 +310,17 @@ const app = new Vue(
 
                 const newMessageString = this.userChat;
 
-                const dateMessage = `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
-                //console.log(dateMessage);
+                //const dateMessage = `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+                const dateMessage = this.getDateAsWeLike();
+                console.log(dateMessage);
 
+                //QUIIIIII
                 const formattedHour = this.getHourFromDate(dateMessage);
                 //console.log(formattedHour);
 
                 const newMessage = {
-                    hour: formattedHour,
+                    //QUIIII
+                    //hour: formattedHour,
                     date: dateMessage,
                     message: newMessageString,
                     status: 'sent'
@@ -215,6 +329,8 @@ const app = new Vue(
                 this.contacts[this.contacts_counter].messages.push(newMessage);
 
                 this.userChat = '';
+
+                Vue.nextTick(() => {this.scrollChatDivToBottom()});
 
                 setTimeout(this.instantResponse, 1000)
 
@@ -226,9 +342,10 @@ const app = new Vue(
             //method for instant response after message
             instantResponse() {
 
-                const dateMessage = `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
-
-                const formattedHour = this.getHourFromDate(dateMessage);
+                //const dateMessage = `${new Date().getDate()}/${(new Date().getMonth())+1}/${new Date().getFullYear()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+                const dateMessage = this.getDateAsWeLike();
+                //QUIIIIIII
+                //const formattedHour = this.getHourFromDate(dateMessage);
 
                 let responseMessage;
 
@@ -247,13 +364,17 @@ const app = new Vue(
                 }
 
                 const newMessageReceived = {
-                    hour: formattedHour,
+                    //QUIIIII
+                    //hour: formattedHour,
                     date: dateMessage,
                     message: responseMessage,
                     status: 'received'
                 }
 
                 this.contacts[this.contacts_counter].messages.push(newMessageReceived);
+
+                Vue.nextTick(() => {this.scrollChatDivToBottom()});
+
             },
 
             //method to extract the hour from the date string
@@ -296,20 +417,6 @@ const app = new Vue(
             }
         },
 
-        /* computed: {
-            filterUsers() {
-
-                this.contacts.forEach(element => {
-                    if (element.name.toLowerCase().includes(this.searchUser.toLowerCase())) {
-                        element.visible = true;
-
-                        console.log('uno trovato');
-                    } else {
-                        element.visible = false; 
-                        console.log('no mi disp');
-                    }
-                })
-            }
-        } */
     }
 )
+
